@@ -1,5 +1,5 @@
 const w = 168;
-const x0 = 20;
+const x0 = 18;
 const dx = w / 6;
 const h = 84;
 const dy = h / 3
