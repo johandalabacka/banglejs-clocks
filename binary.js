@@ -16,37 +16,32 @@ function y2py(y) {
 }
 
 function toBinary(n, digits) {
-  const s = n.toString(2);
-  const padding = digits - s.length;
-  if (padding <= 0) {
-    return s;
-  }
-  return '0'.repeat(padding) + s;
+  return n.toString(2).padStart(digits, '0');
 }
 
 function drawLamps(x, y, n, digits) {
-  const s = toBinary(n, digits)
-  const py = y2py(y)
+  const s = toBinary(n, digits);
+  const py = y2py(y);
   for (let i = 0; i < s.length; i++) {
-    const px = x2px(x + i)
+    const px = x2px(x + i);
     if (s[i] === '1') {
-      g.setColor(255, 255, 0)
-      g.fillCircle(px, py, r)
+      g.setColor(255, 255, 0);
+      g.fillCircle(px, py, r);
     } else {
-      g.setColor(255, 255, 255)
-      g.fillCircle(px, py, r)
+      g.setColor(255, 255, 255);
+      g.fillCircle(px, py, r);
     }
-    g.setColor(0, 0, 0)
-    g.drawCircle(px, py, r)
+    g.setColor(0, 0, 0);
+    g.drawCircle(px, py, r);
   }
 }
 
 
 function draw() {
   const d = new Date();
-  drawLamps(1, 0, d.getHours(), 4)
-  drawLamps(0, 1, d.getMinutes(), 6)
-  drawLamps(0, 2, d.getSeconds(), 6)
+  drawLamps(1, 0, d.getHours(), 4);
+  drawLamps(0, 1, d.getMinutes(), 6);
+  drawLamps(0, 2, d.getSeconds(), 6);
 }
 
 // Clear the screen once, at startup
