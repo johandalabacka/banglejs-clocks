@@ -40,14 +40,20 @@ function drawImage(n, max, len, img) {
   g.drawImage(img, x, y, { rotate: angle })
 }
 
-
-function draw() {
+let lastHhmm = -1
+function draw(force) {
   const d = new Date();
+  const mm = d.getMinutes()
+  const hhmm = (d.getHours() % 12) + d.getMinutes() / 60;
+  if (!force && lastHhmm == hhmm) {
+    // Only redraw then needed
+    return
+  }
+  lastHhmm = hhmm
   g.setColor(255, 0, 0)
   g.fillRect(x0 - 80, y0 - 80, x0 + 80, y0 + 80);
   // const mm = d.getSeconds()
-  const mm = d.getMinutes()
-  const hhmm = (d.getHours() % 12) + d.getMinutes() / 60;
+
   g.drawImage(mouse, 40, 30)
   g.setColor(0)
 
@@ -60,13 +66,13 @@ function draw() {
 // Clear the screen once, at startup
 g.clear();
 // draw immediately at first
-draw();
+draw(true);
 let secondInterval = setInterval(draw, 1000);
 // Stop updates when LCD is off, restart when on
 Bangle.on('lcdPower', on => {
   if (on && !secondInterval) {
     secondInterval = setInterval(draw, 1000);
-    draw(); // draw immediately
+    draw(true); // draw immediately
   } else if (!on && secondInterval) {
     clearInterval(secondInterval);
     secondInterval = undefined;
