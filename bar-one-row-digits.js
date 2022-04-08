@@ -29,7 +29,7 @@ function draw() {
   g.setColor('#ff0000');
   const hx = x2px((hour === 0 ? 12 : hour) * 5);
   const hy1 = y2py(0) + 1;
-  const hy2 = hy1 + dy - 1
+  const hy2 = hy1 + dy - 1;
   g.fillRect(x0 + 1, hy1, hx, hy2);
 
   const minute = d.getMinutes();
@@ -40,7 +40,7 @@ function draw() {
   g.fillRect(x0 + 1, my1, mx, my2);
 
   g.setColor('#00ff00');
-  const sec = d.getSeconds()
+  const sec = d.getSeconds();
   const sx = x2px(sec === 0 ? 60 : sec);
   const sy1 = y2py(2);
   const sy2 = sy1 + dy;
