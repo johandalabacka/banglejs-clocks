@@ -4,6 +4,9 @@ const y0 = 24; // Below widget area
 const y1 = g.getHeight();
 const cx = x0 + (x1 - x0) / 2;
 const cy = y0 + (y1 - y0) / 2;
+const face = cy - y0 - 30;
+
+// @todo use g.theme
 
 const colorBackground = 0x0000;
 const colorHourDigits = 0xF800;
@@ -24,12 +27,12 @@ minY = [];
 for (let i = 0; i < order.length; i++) {
   const hour = order[i];
   const angle = i / 12 * 2 * Math.PI - Math.PI / 2;
-  dotX[hour] = Math.cos(angle) * 30 + cx;
-  dotY[hour] = Math.sin(angle) * 30 + cy;
-  minX[hour] = Math.cos(angle) * 41 + cx;
-  minY[hour] = Math.sin(angle) * 41 + cy;
-  hourX[hour] = Math.cos(angle) * 53 + cx;
-  hourY[hour] = Math.sin(angle) * 53 + cy;
+  dotX[hour] = Math.cos(angle) * face + cx;
+  dotY[hour] = Math.sin(angle) * face + cy;
+  minX[hour] = Math.cos(angle) * (face + 11) + cx;
+  minY[hour] = Math.sin(angle) * (face + 11) + cy;
+  hourX[hour] = Math.cos(angle) * (face + 23) + cx;
+  hourY[hour] = Math.sin(angle) * (face + 23) + cy;
 }
 
 function drawDot(v, max) {
