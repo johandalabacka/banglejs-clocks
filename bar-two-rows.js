@@ -19,7 +19,7 @@ function draw() {
   const d = new Date();
   // d.setHours(6, 30, 30, 0) // All upper row
   // d.setHours(0, 0, 0) // All lower row
-  console.log(d.getHours(), d.getMinutes(), d.getSeconds())
+  console.log(d.getHours(), d.getMinutes(), d.getSeconds());
   // Reset the state of the graphics library
   g.reset();
   g.setColor('#ffffff');
@@ -30,7 +30,7 @@ function draw() {
   const hupper = hour > 0 && hour <= 6;
   const hx = x2px((hupper ? hour : (hour === 0 ? 6 : hour - 6)) * 5);
   const hy1 = y2py(hupper ? 0 : 3) + 1;
-  const hy2 = hy1 + dy - 1
+  const hy2 = hy1 + dy - 1;
   g.fillRect(x0 + 1, hy1, hx, hy2);
 
   const minute = d.getMinutes();
@@ -42,7 +42,7 @@ function draw() {
   g.fillRect(x0 + 1, my1, mx, my2);
 
   g.setColor('#00ff00');
-  const sec = d.getSeconds()
+  const sec = d.getSeconds();
   const supper = sec > 0 && sec <= 30;
   const sx = x2px(supper ? sec : (sec === 0 ? 30 : sec - 30));
   const sy1 = y2py(supper ? 2 : 5);

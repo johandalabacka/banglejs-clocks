@@ -2,9 +2,9 @@ const w = 168;
 const x0 = 18;
 const dx = w / 6;
 const h = 84;
-const dy = h / 3
+const dy = h / 3;
 const y0 = 100;
-const r = dy / 2 - 2
+const r = dy / 2 - 2;
 
 
 function x2px(x) {
