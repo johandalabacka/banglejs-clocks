@@ -229,11 +229,11 @@ function draw() {
 g.clear();
 // draw immediately at first
 draw();
-let secondInterval = setInterval(draw, 100);
+let secondInterval = setInterval(draw, 300);
 // Stop updates when LCD is off, restart when on
 Bangle.on('lcdPower', on => {
   if (on && !secondInterval) {
-    secondInterval = setInterval(draw, 100);
+    secondInterval = setInterval(draw, 300);
     draw(); // draw immediately
   } else if (!on && secondInterval) {
     clearInterval(secondInterval);
